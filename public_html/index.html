@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOHAN GAME - PS4 Webkit</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #d1d5db;
+            background: #0b0e14;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 24px;
+            background: #0d1117;
+            border-bottom: 1px solid #161b22;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            color: #0b0e14;
+            background: #fff;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        main {
+            padding: 40px 30px;
+        }
+
+        .title {
+            margin-bottom: 12px;
+            color: #e56b5f;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .status-info {
+            color: #6e7681;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #8b949e;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">JG</div>
+            <div class="logo-text">JOHAN GAME</div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="title">UNSUPPORTED FIRMWARE</h1>
+        <p class="status-info">
+            Firmware <span class="highlight" id="fw-val">unknown</span> ·
+            Bug <span class="highlight">none</span> ·
+            <span id="ua-val">checking browser...</span>
+        </p>
+    </main>
+
+    <script>
+        const userAgent = navigator.userAgent;
+        const firmwareElement = document.getElementById("fw-val");
+        const browserElement = document.getElementById("ua-val");
+
+        if (userAgent.includes("PlayStation 4")) {
+            browserElement.textContent = "user-agent is a PlayStation 4";
+
+            const firmware = userAgent.match(/PlayStation 4\s([0-9.]+)/);
+
+            if (firmware && firmware[1]) {
+                firmwareElement.textContent = firmware[1];
+            }
+        } else {
+            browserElement.textContent = "user-agent is not a PlayStation 4";
+        }
+    </script>
+</body>
+</html>
